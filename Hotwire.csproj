@@ -60,6 +60,12 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PreviewPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PreviewPanel.Designer.cs">
+      <DependentUpon>PreviewPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Profile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Data.cs" />

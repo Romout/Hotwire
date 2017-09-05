@@ -21,6 +21,8 @@ namespace Hotwire
 		{
 			InitializeComponent();
 
+			panelPreview.Data = _data;
+
 			string path = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
 			if (!Directory.Exists(path))
 				Directory.CreateDirectory(path);
@@ -107,6 +109,121 @@ namespace Hotwire
 				textBoxInputDataRight.Text = path;
 				_data.RightInputPath = path;
 			}
+		}
+
+		private void RefreshPreview()
+		{
+			panelPreview.Refresh();
+		}
+
+		private void buttonLoadDataLeft_Click(object sender, EventArgs e)
+		{
+			if (File.Exists(_data.LeftInputPath))
+			{
+				Profile profile = new Profile();
+				profile.FileName = _data.LeftInputPath;
+				_data.LeftProfile = profile;
+				RefreshPreview();
+			}
+		}
+
+		private void buttonLoadDataRight_Click(object sender, EventArgs e)
+		{
+			if (File.Exists(_data.RightInputPath))
+			{
+				Profile profile = new Profile();
+				profile.FileName = _data.RightInputPath;
+				_data.RightProfile = profile;
+				RefreshPreview();
+			}
+		}
+
+		private void textBoxInputDataLeft_TextChanged(object sender, EventArgs e)
+		{
+			try
+			{
+				if (File.Exists(textBoxInputDataLeft.Text))
+					_data.LeftInputPath = textBoxInputDataLeft.Text;
+			}
+			catch
+			{ }
+		}
+
+		private void textBoxInputDataRight_TextChanged(object sender, EventArgs e)
+		{
+			try
+			{
+				if (File.Exists(textBoxInputDataRight.Text))
+					_data.RightInputPath = textBoxInputDataRight.Text;
+			}
+			catch
+			{ }
+		}
+
+		private void textBoxScaleLeft_TextChanged(object sender, EventArgs e)
+		{
+			double scale;
+			if (double.TryParse(textBoxScaleLeft.Text, out scale))
+			{
+				_data.ScaleLeft = scale;
+				RefreshPreview();
+			}
+		}
+
+		private void textBoxScaleRight_TextChanged(object sender, EventArgs e)
+		{
+			double scale;
+			if (double.TryParse(textBoxScaleRight.Text, out scale))
+			{
+				_data.ScaleRight = scale;
+				RefreshPreview();
+			}
+		}
+
+		private void textBoxOffsetXLeft_TextChanged(object sender, EventArgs e)
+		{
+			double offset;
+			if (double.TryParse(textBoxOffsetXLeft.Text, out offset))
+			{
+				_data.LeftXOffset = offset;
+				RefreshPreview();
+			}
+		}
+
+		private void textBoxOffsetXRight_TextChanged(object sender, EventArgs e)
+		{
+			double offset;
+			if (double.TryParse(textBoxOffsetXRight.Text, out offset))
+			{
+				_data.RightXOffset = offset;
+				RefreshPreview();
+			}
+		}
+
+		private void textBoxOffsetYLeft_TextChanged(object sender, EventArgs e)
+		{
+			double offset;
+			if (double.TryParse(textBoxOffsetYLeft.Text, out offset))
+			{
+				_data.LeftYOffset = offset;
+				RefreshPreview();
+			}
+		}
+
+		private void textBoxOffsetYRight_TextChanged(object sender, EventArgs e)
+		{
+			double offset;
+			if (double.TryParse(textBoxOffsetYRight.Text, out offset))
+			{
+				_data.RightYOffset = offset;
+				RefreshPreview();
+			}
+		}
+
+		private void ValidateDouble(object sender, CancelEventArgs e)
+		{
+			double value;
+			e.Cancel = !double.TryParse(((TextBox)sender).Text, out value);
 		}
 	}
 }

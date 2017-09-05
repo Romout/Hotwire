@@ -41,6 +41,7 @@
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.splitter1 = new System.Windows.Forms.Splitter();
 			this.panel3 = new System.Windows.Forms.Panel();
+			this.buttonLoadDataRight = new System.Windows.Forms.Button();
 			this.textBoxOffsetYRight = new System.Windows.Forms.TextBox();
 			this.label8 = new System.Windows.Forms.Label();
 			this.textBoxOffsetXRight = new System.Windows.Forms.TextBox();
@@ -52,6 +53,7 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.panel2 = new System.Windows.Forms.Panel();
+			this.buttonLoadDataLeft = new System.Windows.Forms.Button();
 			this.textBoxOffsetYLeft = new System.Windows.Forms.TextBox();
 			this.label7 = new System.Windows.Forms.Label();
 			this.textBoxOffsetXLeft = new System.Windows.Forms.TextBox();
@@ -62,8 +64,7 @@
 			this.textBoxInputDataLeft = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
-			this.buttonLoadDataLeft = new System.Windows.Forms.Button();
-			this.buttonLoadDataRight = new System.Windows.Forms.Button();
+			this.panelPreview = new Hotwire.PreviewPanel();
 			this.menuStrip1.SuspendLayout();
 			this.panel1.SuspendLayout();
 			this.panel3.SuspendLayout();
@@ -185,12 +186,25 @@
 			this.panel3.Size = new System.Drawing.Size(472, 100);
 			this.panel3.TabIndex = 1;
 			// 
+			// buttonLoadDataRight
+			// 
+			this.buttonLoadDataRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonLoadDataRight.Location = new System.Drawing.Point(350, 51);
+			this.buttonLoadDataRight.Name = "buttonLoadDataRight";
+			this.buttonLoadDataRight.Size = new System.Drawing.Size(117, 23);
+			this.buttonLoadDataRight.TabIndex = 14;
+			this.buttonLoadDataRight.Text = "Load Data";
+			this.buttonLoadDataRight.UseVisualStyleBackColor = true;
+			this.buttonLoadDataRight.Click += new System.EventHandler(this.buttonLoadDataRight_Click);
+			// 
 			// textBoxOffsetYRight
 			// 
 			this.textBoxOffsetYRight.Location = new System.Drawing.Point(279, 53);
 			this.textBoxOffsetYRight.Name = "textBoxOffsetYRight";
 			this.textBoxOffsetYRight.Size = new System.Drawing.Size(60, 20);
 			this.textBoxOffsetYRight.TabIndex = 13;
+			this.textBoxOffsetYRight.TextChanged += new System.EventHandler(this.textBoxOffsetYRight_TextChanged);
+			this.textBoxOffsetYRight.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateDouble);
 			// 
 			// label8
 			// 
@@ -207,6 +221,8 @@
 			this.textBoxOffsetXRight.Name = "textBoxOffsetXRight";
 			this.textBoxOffsetXRight.Size = new System.Drawing.Size(60, 20);
 			this.textBoxOffsetXRight.TabIndex = 10;
+			this.textBoxOffsetXRight.TextChanged += new System.EventHandler(this.textBoxOffsetXRight_TextChanged);
+			this.textBoxOffsetXRight.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateDouble);
 			// 
 			// textBoxScaleRight
 			// 
@@ -214,6 +230,8 @@
 			this.textBoxScaleRight.Name = "textBoxScaleRight";
 			this.textBoxScaleRight.Size = new System.Drawing.Size(72, 20);
 			this.textBoxScaleRight.TabIndex = 11;
+			this.textBoxScaleRight.TextChanged += new System.EventHandler(this.textBoxScaleRight_TextChanged);
+			this.textBoxScaleRight.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateDouble);
 			// 
 			// label9
 			// 
@@ -254,6 +272,7 @@
 			this.textBoxInputDataRight.Name = "textBoxInputDataRight";
 			this.textBoxInputDataRight.Size = new System.Drawing.Size(366, 20);
 			this.textBoxInputDataRight.TabIndex = 5;
+			this.textBoxInputDataRight.TextChanged += new System.EventHandler(this.textBoxInputDataRight_TextChanged);
 			// 
 			// label4
 			// 
@@ -298,12 +317,26 @@
 			this.panel2.Size = new System.Drawing.Size(464, 100);
 			this.panel2.TabIndex = 0;
 			// 
+			// buttonLoadDataLeft
+			// 
+			this.buttonLoadDataLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonLoadDataLeft.Location = new System.Drawing.Point(340, 51);
+			this.buttonLoadDataLeft.Name = "buttonLoadDataLeft";
+			this.buttonLoadDataLeft.Size = new System.Drawing.Size(117, 23);
+			this.buttonLoadDataLeft.TabIndex = 8;
+			this.buttonLoadDataLeft.Text = "Load Data";
+			this.buttonLoadDataLeft.UseVisualStyleBackColor = true;
+			this.buttonLoadDataLeft.Click += new System.EventHandler(this.buttonLoadDataLeft_Click);
+			// 
 			// textBoxOffsetYLeft
 			// 
 			this.textBoxOffsetYLeft.Location = new System.Drawing.Point(274, 53);
 			this.textBoxOffsetYLeft.Name = "textBoxOffsetYLeft";
 			this.textBoxOffsetYLeft.Size = new System.Drawing.Size(60, 20);
 			this.textBoxOffsetYLeft.TabIndex = 7;
+			this.textBoxOffsetYLeft.Text = "0";
+			this.textBoxOffsetYLeft.TextChanged += new System.EventHandler(this.textBoxOffsetYLeft_TextChanged);
+			this.textBoxOffsetYLeft.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateDouble);
 			// 
 			// label7
 			// 
@@ -320,6 +353,9 @@
 			this.textBoxOffsetXLeft.Name = "textBoxOffsetXLeft";
 			this.textBoxOffsetXLeft.Size = new System.Drawing.Size(60, 20);
 			this.textBoxOffsetXLeft.TabIndex = 5;
+			this.textBoxOffsetXLeft.Text = "0";
+			this.textBoxOffsetXLeft.TextChanged += new System.EventHandler(this.textBoxOffsetXLeft_TextChanged);
+			this.textBoxOffsetXLeft.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateDouble);
 			// 
 			// textBoxScaleLeft
 			// 
@@ -327,6 +363,9 @@
 			this.textBoxScaleLeft.Name = "textBoxScaleLeft";
 			this.textBoxScaleLeft.Size = new System.Drawing.Size(72, 20);
 			this.textBoxScaleLeft.TabIndex = 5;
+			this.textBoxScaleLeft.Text = "1,0";
+			this.textBoxScaleLeft.TextChanged += new System.EventHandler(this.textBoxScaleLeft_TextChanged);
+			this.textBoxScaleLeft.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateDouble);
 			// 
 			// label6
 			// 
@@ -367,6 +406,7 @@
 			this.textBoxInputDataLeft.Name = "textBoxInputDataLeft";
 			this.textBoxInputDataLeft.Size = new System.Drawing.Size(360, 20);
 			this.textBoxInputDataLeft.TabIndex = 2;
+			this.textBoxInputDataLeft.TextChanged += new System.EventHandler(this.textBoxInputDataLeft_TextChanged);
 			// 
 			// label3
 			// 
@@ -390,31 +430,21 @@
 			this.label1.Text = "Left Input";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// buttonLoadDataLeft
+			// panelPreview
 			// 
-			this.buttonLoadDataLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonLoadDataLeft.Location = new System.Drawing.Point(340, 51);
-			this.buttonLoadDataLeft.Name = "buttonLoadDataLeft";
-			this.buttonLoadDataLeft.Size = new System.Drawing.Size(117, 23);
-			this.buttonLoadDataLeft.TabIndex = 8;
-			this.buttonLoadDataLeft.Text = "Load Data";
-			this.buttonLoadDataLeft.UseVisualStyleBackColor = true;
-			// 
-			// buttonLoadDataRight
-			// 
-			this.buttonLoadDataRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonLoadDataRight.Location = new System.Drawing.Point(350, 51);
-			this.buttonLoadDataRight.Name = "buttonLoadDataRight";
-			this.buttonLoadDataRight.Size = new System.Drawing.Size(117, 23);
-			this.buttonLoadDataRight.TabIndex = 14;
-			this.buttonLoadDataRight.Text = "Load Data";
-			this.buttonLoadDataRight.UseVisualStyleBackColor = true;
+			this.panelPreview.Data = null;
+			this.panelPreview.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panelPreview.Location = new System.Drawing.Point(0, 124);
+			this.panelPreview.Name = "panelPreview";
+			this.panelPreview.Size = new System.Drawing.Size(936, 385);
+			this.panelPreview.TabIndex = 3;
 			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(936, 509);
+			this.Controls.Add(this.panelPreview);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.menuStrip1);
 			this.MainMenuStrip = this.menuStrip1;
@@ -469,6 +499,7 @@
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.Button buttonLoadDataRight;
 		private System.Windows.Forms.Button buttonLoadDataLeft;
+		private PreviewPanel panelPreview;
 	}
 }
 

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace Hotwire
 	{
 		private Configuration _configuration;
 		private Data _data = new Data();
+		private SerialPort _port;
 
 		public MainForm()
 		{
@@ -224,6 +226,37 @@ namespace Hotwire
 		{
 			double value;
 			e.Cancel = !double.TryParse(((TextBox)sender).Text, out value);
+		}
+
+		private void manualMovementsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (_port == null || !_port.IsOpen)
+				MessageBox.Show("You need to choose the port before using it");
+			else
+			{
+				using (ManualControlDialog dialog = new ManualControlDialog())
+				{
+					dialog.Port = _port;
+					dialog.ShowDialog();
+				}
+			}
+		}
+
+		private void toolStripMenuItemPortSelection_DropDownOpening(object sender, EventArgs e)
+		{
+			string[] portNames = SerialPort.GetPortNames();
+			toolStripMenuItemPortSelection.DropDownItems.Clear();
+			toolStripMenuItemPortSelection.DropDownItems.AddRange(portNames.Select(n => new ToolStripMenuItem(n, null, PortSelected)).ToArray());
+		}
+
+		private void PortSelected(object sender, EventArgs e)
+		{
+			string portName = ((ToolStripMenuItem)sender).Text;
+			if (_port != null && _port.IsOpen)
+				_port.Close();
+
+			_port = new SerialPort(portName, 9600);
+			_port.Open();
 		}
 	}
 }

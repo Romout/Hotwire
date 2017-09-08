@@ -38,8 +38,9 @@
 			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.hardwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.splitter1 = new System.Windows.Forms.Splitter();
+			this.toolStripMenuItemPortSelection = new System.Windows.Forms.ToolStripMenuItem();
+			this.cOM1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.manualMovementsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.panel3 = new System.Windows.Forms.Panel();
 			this.buttonLoadDataRight = new System.Windows.Forms.Button();
 			this.textBoxOffsetYRight = new System.Windows.Forms.TextBox();
@@ -65,13 +66,11 @@
 			this.label3 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.panelPreview = new Hotwire.PreviewPanel();
-			this.manualMovementsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripMenuItemPortSelection = new System.Windows.Forms.ToolStripMenuItem();
-			this.cOM1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.menuStrip1.SuspendLayout();
-			this.panel1.SuspendLayout();
 			this.panel3.SuspendLayout();
 			this.panel2.SuspendLayout();
+			this.tableLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// menuStrip1
@@ -101,37 +100,37 @@
 			// openToolStripMenuItem
 			// 
 			this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-			this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.openToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
 			this.openToolStripMenuItem.Text = "&Open...";
 			this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
 			// 
 			// toolStripMenuItem2
 			// 
 			this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-			this.toolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+			this.toolStripMenuItem2.Size = new System.Drawing.Size(121, 22);
 			this.toolStripMenuItem2.Text = "&Save";
 			// 
 			// toolStripMenuItem3
 			// 
 			this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-			this.toolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+			this.toolStripMenuItem3.Size = new System.Drawing.Size(121, 22);
 			this.toolStripMenuItem3.Text = "S&ave as...";
 			// 
 			// closeToolStripMenuItem
 			// 
 			this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-			this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.closeToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
 			this.closeToolStripMenuItem.Text = "&Close";
 			// 
 			// toolStripMenuItem1
 			// 
 			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-			this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+			this.toolStripMenuItem1.Size = new System.Drawing.Size(118, 6);
 			// 
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
 			this.exitToolStripMenuItem.Text = "&Exit";
 			// 
 			// hardwareToolStripMenuItem
@@ -151,24 +150,27 @@
 			this.configurationToolStripMenuItem.Text = "&Configuration...";
 			this.configurationToolStripMenuItem.Click += new System.EventHandler(this.configurationToolStripMenuItem_Click);
 			// 
-			// panel1
+			// toolStripMenuItemPortSelection
 			// 
-			this.panel1.Controls.Add(this.splitter1);
-			this.panel1.Controls.Add(this.panel3);
-			this.panel1.Controls.Add(this.panel2);
-			this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel1.Location = new System.Drawing.Point(0, 24);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(936, 100);
-			this.panel1.TabIndex = 2;
+			this.toolStripMenuItemPortSelection.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cOM1ToolStripMenuItem});
+			this.toolStripMenuItemPortSelection.Name = "toolStripMenuItemPortSelection";
+			this.toolStripMenuItemPortSelection.Size = new System.Drawing.Size(189, 22);
+			this.toolStripMenuItemPortSelection.Text = "Port Selection";
+			this.toolStripMenuItemPortSelection.DropDownOpening += new System.EventHandler(this.toolStripMenuItemPortSelection_DropDownOpening);
 			// 
-			// splitter1
+			// cOM1ToolStripMenuItem
 			// 
-			this.splitter1.Location = new System.Drawing.Point(464, 0);
-			this.splitter1.Name = "splitter1";
-			this.splitter1.Size = new System.Drawing.Size(3, 100);
-			this.splitter1.TabIndex = 2;
-			this.splitter1.TabStop = false;
+			this.cOM1ToolStripMenuItem.Name = "cOM1ToolStripMenuItem";
+			this.cOM1ToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+			this.cOM1ToolStripMenuItem.Text = "COM1";
+			// 
+			// manualMovementsToolStripMenuItem
+			// 
+			this.manualMovementsToolStripMenuItem.Name = "manualMovementsToolStripMenuItem";
+			this.manualMovementsToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+			this.manualMovementsToolStripMenuItem.Text = "Manual Movements...";
+			this.manualMovementsToolStripMenuItem.Click += new System.EventHandler(this.manualMovementsToolStripMenuItem_Click);
 			// 
 			// panel3
 			// 
@@ -184,17 +186,16 @@
 			this.panel3.Controls.Add(this.textBoxInputDataRight);
 			this.panel3.Controls.Add(this.label4);
 			this.panel3.Controls.Add(this.label2);
-			this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panel3.Location = new System.Drawing.Point(464, 0);
+			this.panel3.Location = new System.Drawing.Point(471, 3);
 			this.panel3.MinimumSize = new System.Drawing.Size(175, 2);
 			this.panel3.Name = "panel3";
-			this.panel3.Size = new System.Drawing.Size(472, 100);
+			this.panel3.Size = new System.Drawing.Size(462, 100);
 			this.panel3.TabIndex = 1;
 			// 
 			// buttonLoadDataRight
 			// 
 			this.buttonLoadDataRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonLoadDataRight.Location = new System.Drawing.Point(350, 51);
+			this.buttonLoadDataRight.Location = new System.Drawing.Point(340, 51);
 			this.buttonLoadDataRight.Name = "buttonLoadDataRight";
 			this.buttonLoadDataRight.Size = new System.Drawing.Size(117, 23);
 			this.buttonLoadDataRight.TabIndex = 14;
@@ -208,6 +209,7 @@
 			this.textBoxOffsetYRight.Name = "textBoxOffsetYRight";
 			this.textBoxOffsetYRight.Size = new System.Drawing.Size(60, 20);
 			this.textBoxOffsetYRight.TabIndex = 13;
+			this.textBoxOffsetYRight.Text = "0";
 			this.textBoxOffsetYRight.TextChanged += new System.EventHandler(this.textBoxOffsetYRight_TextChanged);
 			this.textBoxOffsetYRight.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateDouble);
 			// 
@@ -226,6 +228,7 @@
 			this.textBoxOffsetXRight.Name = "textBoxOffsetXRight";
 			this.textBoxOffsetXRight.Size = new System.Drawing.Size(60, 20);
 			this.textBoxOffsetXRight.TabIndex = 10;
+			this.textBoxOffsetXRight.Text = "0";
 			this.textBoxOffsetXRight.TextChanged += new System.EventHandler(this.textBoxOffsetXRight_TextChanged);
 			this.textBoxOffsetXRight.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateDouble);
 			// 
@@ -235,6 +238,7 @@
 			this.textBoxScaleRight.Name = "textBoxScaleRight";
 			this.textBoxScaleRight.Size = new System.Drawing.Size(72, 20);
 			this.textBoxScaleRight.TabIndex = 11;
+			this.textBoxScaleRight.Text = "1,0";
 			this.textBoxScaleRight.TextChanged += new System.EventHandler(this.textBoxScaleRight_TextChanged);
 			this.textBoxScaleRight.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateDouble);
 			// 
@@ -259,7 +263,7 @@
 			// buttonBrowseRight
 			// 
 			this.buttonBrowseRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonBrowseRight.Location = new System.Drawing.Point(422, 22);
+			this.buttonBrowseRight.Location = new System.Drawing.Point(412, 22);
 			this.buttonBrowseRight.Name = "buttonBrowseRight";
 			this.buttonBrowseRight.Size = new System.Drawing.Size(45, 23);
 			this.buttonBrowseRight.TabIndex = 6;
@@ -275,7 +279,7 @@
 			this.textBoxInputDataRight.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
 			this.textBoxInputDataRight.Location = new System.Drawing.Point(50, 24);
 			this.textBoxInputDataRight.Name = "textBoxInputDataRight";
-			this.textBoxInputDataRight.Size = new System.Drawing.Size(366, 20);
+			this.textBoxInputDataRight.Size = new System.Drawing.Size(356, 20);
 			this.textBoxInputDataRight.TabIndex = 5;
 			this.textBoxInputDataRight.TextChanged += new System.EventHandler(this.textBoxInputDataRight_TextChanged);
 			// 
@@ -296,7 +300,7 @@
 			this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
 			this.label2.Location = new System.Drawing.Point(0, 0);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(470, 20);
+			this.label2.Size = new System.Drawing.Size(460, 20);
 			this.label2.TabIndex = 1;
 			this.label2.Text = "Right Input";
 			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -315,17 +319,16 @@
 			this.panel2.Controls.Add(this.textBoxInputDataLeft);
 			this.panel2.Controls.Add(this.label3);
 			this.panel2.Controls.Add(this.label1);
-			this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-			this.panel2.Location = new System.Drawing.Point(0, 0);
+			this.panel2.Location = new System.Drawing.Point(3, 3);
 			this.panel2.MinimumSize = new System.Drawing.Size(333, 2);
 			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(464, 100);
+			this.panel2.Size = new System.Drawing.Size(462, 100);
 			this.panel2.TabIndex = 0;
 			// 
 			// buttonLoadDataLeft
 			// 
 			this.buttonLoadDataLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonLoadDataLeft.Location = new System.Drawing.Point(340, 51);
+			this.buttonLoadDataLeft.Location = new System.Drawing.Point(338, 51);
 			this.buttonLoadDataLeft.Name = "buttonLoadDataLeft";
 			this.buttonLoadDataLeft.Size = new System.Drawing.Size(117, 23);
 			this.buttonLoadDataLeft.TabIndex = 8;
@@ -393,7 +396,7 @@
 			// buttonBrowseLeft
 			// 
 			this.buttonBrowseLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonBrowseLeft.Location = new System.Drawing.Point(412, 22);
+			this.buttonBrowseLeft.Location = new System.Drawing.Point(410, 22);
 			this.buttonBrowseLeft.Name = "buttonBrowseLeft";
 			this.buttonBrowseLeft.Size = new System.Drawing.Size(45, 23);
 			this.buttonBrowseLeft.TabIndex = 3;
@@ -409,7 +412,7 @@
 			this.textBoxInputDataLeft.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
 			this.textBoxInputDataLeft.Location = new System.Drawing.Point(46, 24);
 			this.textBoxInputDataLeft.Name = "textBoxInputDataLeft";
-			this.textBoxInputDataLeft.Size = new System.Drawing.Size(360, 20);
+			this.textBoxInputDataLeft.Size = new System.Drawing.Size(358, 20);
 			this.textBoxInputDataLeft.TabIndex = 2;
 			this.textBoxInputDataLeft.TextChanged += new System.EventHandler(this.textBoxInputDataLeft_TextChanged);
 			// 
@@ -430,7 +433,7 @@
 			this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
 			this.label1.Location = new System.Drawing.Point(0, 0);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(462, 20);
+			this.label1.Size = new System.Drawing.Size(460, 20);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Left Input";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -439,32 +442,25 @@
 			// 
 			this.panelPreview.Data = null;
 			this.panelPreview.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panelPreview.Location = new System.Drawing.Point(0, 124);
+			this.panelPreview.Location = new System.Drawing.Point(0, 131);
 			this.panelPreview.Name = "panelPreview";
-			this.panelPreview.Size = new System.Drawing.Size(936, 385);
+			this.panelPreview.Size = new System.Drawing.Size(936, 378);
 			this.panelPreview.TabIndex = 3;
 			// 
-			// manualMovementsToolStripMenuItem
+			// tableLayoutPanel1
 			// 
-			this.manualMovementsToolStripMenuItem.Name = "manualMovementsToolStripMenuItem";
-			this.manualMovementsToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-			this.manualMovementsToolStripMenuItem.Text = "Manual Movements...";
-			this.manualMovementsToolStripMenuItem.Click += new System.EventHandler(this.manualMovementsToolStripMenuItem_Click);
-			// 
-			// toolStripMenuItemPortSelection
-			// 
-			this.toolStripMenuItemPortSelection.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cOM1ToolStripMenuItem});
-			this.toolStripMenuItemPortSelection.Name = "toolStripMenuItemPortSelection";
-			this.toolStripMenuItemPortSelection.Size = new System.Drawing.Size(189, 22);
-			this.toolStripMenuItemPortSelection.Text = "Port Selection";
-			this.toolStripMenuItemPortSelection.DropDownOpening += new System.EventHandler(this.toolStripMenuItemPortSelection_DropDownOpening);
-			// 
-			// cOM1ToolStripMenuItem
-			// 
-			this.cOM1ToolStripMenuItem.Name = "cOM1ToolStripMenuItem";
-			this.cOM1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.cOM1ToolStripMenuItem.Text = "COM1";
+			this.tableLayoutPanel1.ColumnCount = 2;
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 0);
+			this.tableLayoutPanel1.Controls.Add(this.panel3, 1, 0);
+			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+			this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
+			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+			this.tableLayoutPanel1.RowCount = 1;
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(936, 107);
+			this.tableLayoutPanel1.TabIndex = 4;
 			// 
 			// MainForm
 			// 
@@ -472,18 +468,18 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(936, 509);
 			this.Controls.Add(this.panelPreview);
-			this.Controls.Add(this.panel1);
+			this.Controls.Add(this.tableLayoutPanel1);
 			this.Controls.Add(this.menuStrip1);
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "MainForm";
 			this.Text = "Hotwire";
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
-			this.panel1.ResumeLayout(false);
 			this.panel3.ResumeLayout(false);
 			this.panel3.PerformLayout();
 			this.panel2.ResumeLayout(false);
 			this.panel2.PerformLayout();
+			this.tableLayoutPanel1.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -500,8 +496,6 @@
 		private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem hardwareToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem configurationToolStripMenuItem;
-		private System.Windows.Forms.Panel panel1;
-		private System.Windows.Forms.Splitter splitter1;
 		private System.Windows.Forms.Panel panel3;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Panel panel2;
@@ -530,6 +524,7 @@
 		private System.Windows.Forms.ToolStripMenuItem manualMovementsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemPortSelection;
 		private System.Windows.Forms.ToolStripMenuItem cOM1ToolStripMenuItem;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 	}
 }
 

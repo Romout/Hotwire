@@ -35,51 +35,100 @@ namespace Hotwire
 
 		private void buttonLBUp_Click(object sender, EventArgs e)
 		{
-			Port.MoveMotor('a', 100);
+			textBox.Text = "";
+			short steps = (short)trackBarStepsMotorA.Value;
+			if (checkBoxMaster.Checked == false)
+				Port.MoveMotor(1, steps);
+			else
+				Port.MoveMotors(steps, steps, steps, steps);
+
 			PortReader();
 		}
 
 		private void buttonLBDown_Click(object sender, EventArgs e)
 		{
-			Port.MoveMotor('a', -100);
+			textBox.Text = "";
+			short steps = (short)(-trackBarStepsMotorA.Value);
+			if (checkBoxMaster.Checked == false)
+				Port.MoveMotor(1, steps);
+			else
+				Port.MoveMotors(steps, steps, steps, steps);
+
 			PortReader();
 		}
 
 		private void buttonLFUp_Click(object sender, EventArgs e)
 		{
-			Port.MoveMotor('b', 1);
+			textBox.Text = "";
+			short steps = (short)trackBarStepsMotorB.Value;
+			Port.MoveMotor(2, steps);
 		}
 
 		private void buttonLFDown_Click(object sender, EventArgs e)
 		{
-			Port.MoveMotor('b', -1);
+			textBox.Text = "";
+			short steps = (short)(-trackBarStepsMotorB.Value);
+			Port.MoveMotor(2, steps);
 		}
 
 		private void buttonRBUp_Click(object sender, EventArgs e)
 		{
-			Port.MoveMotor('c', 1);
+			textBox.Text = "";
+			short steps = (short)trackBarStepsMotorC.Value;
+			Port.MoveMotor(3, steps);
 		}
 
 		private void buttonRBDown_Click(object sender, EventArgs e)
 		{
-			Port.MoveMotor('c', -1);
+			textBox.Text = "";
+			short steps = (short)(-trackBarStepsMotorC.Value);
+			Port.MoveMotor(3, steps);
 		}
 
 		private void buttonRLUp_Click(object sender, EventArgs e)
 		{
-			Port.MoveMotor('d', 1);
+			textBox.Text = "";
+			short steps = (short)trackBarStepsMotorD.Value;
+			Port.MoveMotor(4, 1);
 		}
 
 		private void buttonRLDown_Click(object sender, EventArgs e)
 		{
-			Port.MoveMotor('d', -1);
+			textBox.Text = "";
+			short steps = (short)(-trackBarStepsMotorD.Value);
+			Port.MoveMotor(4, steps);
 		}
 
+		private void buttonLBStop_Click(object sender, EventArgs e)
+		{
+			textBox.Text = "";
+			if (checkBoxMaster.Checked)
+				Port.StopMotors();
+			else
+				Port.StopMotor(1);
+		}
+
+		private void buttonLeftStop_Click(object sender, EventArgs e)
+		{
+			textBox.Text = "";
+			Port.StopMotor(1);
+			Port.StopMotor(2);
+		}
+
+		private void buttonRightStop_Click(object sender, EventArgs e)
+		{
+			textBox.Text = "";
+			Port.StopMotor(3);
+			Port.StopMotor(4);
+		}
+
+		// TODO: Short timeout
 		private void PortReader()
 		{
 			textBox.Text = Port.ReadLine();
 		}
 
 		public SerialPort Port { get; set; }
+
 	}
 }

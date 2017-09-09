@@ -237,6 +237,7 @@ namespace Hotwire
 				using (ManualControlDialog dialog = new ManualControlDialog())
 				{
 					dialog.Port = _port;
+					dialog.Configuration = _configuration;
 					dialog.ShowDialog();
 				}
 			}

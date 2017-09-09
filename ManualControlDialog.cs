@@ -33,10 +33,19 @@ namespace Hotwire
 			buttonToggleConnection.BackColor = Port.IsOpen ? Color.FromArgb(0, 192, 0) : Color.Red;
 		}
 
+		private short Invert(decimal value, bool configuration, bool invert)
+		{
+			short steps = (short)value;
+			if ((invert && !configuration) || (configuration && !invert))
+				steps = (short)(-steps);
+
+			return steps;
+		}
+
 		private void buttonLBUp_Click(object sender, EventArgs e)
 		{
 			textBox.Text = "";
-			short steps = (short)trackBarStepsMotorA.Value;
+			short steps = Invert(trackBarStepsMotorA.Value, Configuration.ReverseA, false);
 			if (checkBoxMaster.Checked == false)
 				Port.MoveMotor(1, steps);
 			else
@@ -48,7 +57,7 @@ namespace Hotwire
 		private void buttonLBDown_Click(object sender, EventArgs e)
 		{
 			textBox.Text = "";
-			short steps = (short)(-trackBarStepsMotorA.Value);
+			short steps = Invert(trackBarStepsMotorA.Value, Configuration.ReverseA, true);
 			if (checkBoxMaster.Checked == false)
 				Port.MoveMotor(1, steps);
 			else
@@ -60,42 +69,42 @@ namespace Hotwire
 		private void buttonLFUp_Click(object sender, EventArgs e)
 		{
 			textBox.Text = "";
-			short steps = (short)trackBarStepsMotorB.Value;
+			short steps = Invert(trackBarStepsMotorB.Value, Configuration.ReverseB, false);
 			Port.MoveMotor(2, steps);
 		}
 
 		private void buttonLFDown_Click(object sender, EventArgs e)
 		{
 			textBox.Text = "";
-			short steps = (short)(-trackBarStepsMotorB.Value);
+			short steps = Invert(trackBarStepsMotorB.Value, Configuration.ReverseB, true);
 			Port.MoveMotor(2, steps);
 		}
 
 		private void buttonRBUp_Click(object sender, EventArgs e)
 		{
 			textBox.Text = "";
-			short steps = (short)trackBarStepsMotorC.Value;
+			short steps = Invert(trackBarStepsMotorC.Value, Configuration.ReverseC, false);
 			Port.MoveMotor(3, steps);
 		}
 
 		private void buttonRBDown_Click(object sender, EventArgs e)
 		{
 			textBox.Text = "";
-			short steps = (short)(-trackBarStepsMotorC.Value);
+			short steps = Invert(trackBarStepsMotorC.Value, Configuration.ReverseC, true);
 			Port.MoveMotor(3, steps);
 		}
 
 		private void buttonRLUp_Click(object sender, EventArgs e)
 		{
 			textBox.Text = "";
-			short steps = (short)trackBarStepsMotorD.Value;
+			short steps = Invert(trackBarStepsMotorD.Value, Configuration.ReverseD, false);
 			Port.MoveMotor(4, 1);
 		}
 
 		private void buttonRLDown_Click(object sender, EventArgs e)
 		{
 			textBox.Text = "";
-			short steps = (short)(-trackBarStepsMotorD.Value);
+			short steps = Invert(trackBarStepsMotorD.Value, Configuration.ReverseD, true);
 			Port.MoveMotor(4, steps);
 		}
 
@@ -106,6 +115,21 @@ namespace Hotwire
 				Port.StopMotors();
 			else
 				Port.StopMotor(1);
+		}
+
+		private void buttonLFStop_Click(object sender, EventArgs e)
+		{
+			Port.StopMotor(2);
+		}
+
+		private void buttonRBStop_Click(object sender, EventArgs e)
+		{
+			Port.StopMotor(3);
+		}
+
+		private void buttonRLStop_Click(object sender, EventArgs e)
+		{
+			Port.StopMotor(4);
 		}
 
 		private void buttonLeftStop_Click(object sender, EventArgs e)
@@ -130,5 +154,6 @@ namespace Hotwire
 
 		public SerialPort Port { get; set; }
 
+		public Configuration Configuration { get; set; }
 	}
 }

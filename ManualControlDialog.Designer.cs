@@ -48,21 +48,26 @@
 			this.tabPage2 = new System.Windows.Forms.TabPage();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.panel3 = new System.Windows.Forms.Panel();
+			this.trackBarStepsMotorD = new System.Windows.Forms.TrackBar();
 			this.buttonRLDown = new System.Windows.Forms.Button();
 			this.buttonRLStop = new System.Windows.Forms.Button();
 			this.buttonRLUp = new System.Windows.Forms.Button();
 			this.label5 = new System.Windows.Forms.Label();
 			this.panel4 = new System.Windows.Forms.Panel();
+			this.trackBarStepsMotorC = new System.Windows.Forms.TrackBar();
 			this.buttonRBDown = new System.Windows.Forms.Button();
 			this.buttonRBStop = new System.Windows.Forms.Button();
 			this.buttonRBUp = new System.Windows.Forms.Button();
 			this.label6 = new System.Windows.Forms.Label();
 			this.panel5 = new System.Windows.Forms.Panel();
+			this.trackBarStepsMotorB = new System.Windows.Forms.TrackBar();
 			this.buttonLFDown = new System.Windows.Forms.Button();
 			this.buttonLFStop = new System.Windows.Forms.Button();
 			this.buttonLFUp = new System.Windows.Forms.Button();
 			this.label4 = new System.Windows.Forms.Label();
 			this.panel6 = new System.Windows.Forms.Panel();
+			this.trackBarStepsMotorA = new System.Windows.Forms.TrackBar();
+			this.checkBoxMaster = new System.Windows.Forms.CheckBox();
 			this.buttonLBDown = new System.Windows.Forms.Button();
 			this.buttonLBStop = new System.Windows.Forms.Button();
 			this.buttonLBUp = new System.Windows.Forms.Button();
@@ -70,11 +75,6 @@
 			this.buttonClose = new System.Windows.Forms.Button();
 			this.buttonToggleConnection = new System.Windows.Forms.Button();
 			this.textBox = new System.Windows.Forms.TextBox();
-			this.checkBoxMaster = new System.Windows.Forms.CheckBox();
-			this.trackBarStepsMotorA = new System.Windows.Forms.TrackBar();
-			this.trackBarStepsMotorB = new System.Windows.Forms.TrackBar();
-			this.trackBarStepsMotorC = new System.Windows.Forms.TrackBar();
-			this.trackBarStepsMotorD = new System.Windows.Forms.TrackBar();
 			this.button1 = new System.Windows.Forms.Button();
 			this.tabControl.SuspendLayout();
 			this.tabPage1.SuspendLayout();
@@ -84,13 +84,13 @@
 			this.tabPage2.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			this.panel3.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.trackBarStepsMotorD)).BeginInit();
 			this.panel4.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.trackBarStepsMotorC)).BeginInit();
 			this.panel5.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.trackBarStepsMotorB)).BeginInit();
 			this.panel6.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.trackBarStepsMotorA)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.trackBarStepsMotorB)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.trackBarStepsMotorC)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.trackBarStepsMotorD)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tabControl
@@ -332,6 +332,21 @@
 			this.panel3.Size = new System.Drawing.Size(165, 269);
 			this.panel3.TabIndex = 8;
 			// 
+			// trackBarStepsMotorD
+			// 
+			this.trackBarStepsMotorD.LargeChange = 250;
+			this.trackBarStepsMotorD.Location = new System.Drawing.Point(117, 23);
+			this.trackBarStepsMotorD.Maximum = 4079;
+			this.trackBarStepsMotorD.Minimum = 1;
+			this.trackBarStepsMotorD.Name = "trackBarStepsMotorD";
+			this.trackBarStepsMotorD.Orientation = System.Windows.Forms.Orientation.Vertical;
+			this.trackBarStepsMotorD.Size = new System.Drawing.Size(45, 243);
+			this.trackBarStepsMotorD.SmallChange = 100;
+			this.trackBarStepsMotorD.TabIndex = 13;
+			this.trackBarStepsMotorD.TickFrequency = 256;
+			this.trackBarStepsMotorD.TickStyle = System.Windows.Forms.TickStyle.Both;
+			this.trackBarStepsMotorD.Value = 250;
+			// 
 			// buttonRLDown
 			// 
 			this.buttonRLDown.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -352,6 +367,7 @@
 			this.buttonRLStop.Size = new System.Drawing.Size(32, 32);
 			this.buttonRLStop.TabIndex = 10;
 			this.buttonRLStop.UseVisualStyleBackColor = true;
+			this.buttonRLStop.Click += new System.EventHandler(this.buttonRLStop_Click);
 			// 
 			// buttonRLUp
 			// 
@@ -390,6 +406,21 @@
 			this.panel4.Size = new System.Drawing.Size(162, 269);
 			this.panel4.TabIndex = 9;
 			// 
+			// trackBarStepsMotorC
+			// 
+			this.trackBarStepsMotorC.LargeChange = 250;
+			this.trackBarStepsMotorC.Location = new System.Drawing.Point(114, 23);
+			this.trackBarStepsMotorC.Maximum = 4079;
+			this.trackBarStepsMotorC.Minimum = 1;
+			this.trackBarStepsMotorC.Name = "trackBarStepsMotorC";
+			this.trackBarStepsMotorC.Orientation = System.Windows.Forms.Orientation.Vertical;
+			this.trackBarStepsMotorC.Size = new System.Drawing.Size(45, 243);
+			this.trackBarStepsMotorC.SmallChange = 100;
+			this.trackBarStepsMotorC.TabIndex = 12;
+			this.trackBarStepsMotorC.TickFrequency = 256;
+			this.trackBarStepsMotorC.TickStyle = System.Windows.Forms.TickStyle.Both;
+			this.trackBarStepsMotorC.Value = 250;
+			// 
 			// buttonRBDown
 			// 
 			this.buttonRBDown.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -410,6 +441,7 @@
 			this.buttonRBStop.Size = new System.Drawing.Size(32, 32);
 			this.buttonRBStop.TabIndex = 10;
 			this.buttonRBStop.UseVisualStyleBackColor = true;
+			this.buttonRBStop.Click += new System.EventHandler(this.buttonRBStop_Click);
 			// 
 			// buttonRBUp
 			// 
@@ -448,6 +480,21 @@
 			this.panel5.Size = new System.Drawing.Size(162, 269);
 			this.panel5.TabIndex = 10;
 			// 
+			// trackBarStepsMotorB
+			// 
+			this.trackBarStepsMotorB.LargeChange = 250;
+			this.trackBarStepsMotorB.Location = new System.Drawing.Point(117, 23);
+			this.trackBarStepsMotorB.Maximum = 4079;
+			this.trackBarStepsMotorB.Minimum = 1;
+			this.trackBarStepsMotorB.Name = "trackBarStepsMotorB";
+			this.trackBarStepsMotorB.Orientation = System.Windows.Forms.Orientation.Vertical;
+			this.trackBarStepsMotorB.Size = new System.Drawing.Size(45, 243);
+			this.trackBarStepsMotorB.SmallChange = 100;
+			this.trackBarStepsMotorB.TabIndex = 12;
+			this.trackBarStepsMotorB.TickFrequency = 256;
+			this.trackBarStepsMotorB.TickStyle = System.Windows.Forms.TickStyle.Both;
+			this.trackBarStepsMotorB.Value = 250;
+			// 
 			// buttonLFDown
 			// 
 			this.buttonLFDown.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -468,6 +515,7 @@
 			this.buttonLFStop.Size = new System.Drawing.Size(32, 32);
 			this.buttonLFStop.TabIndex = 10;
 			this.buttonLFStop.UseVisualStyleBackColor = true;
+			this.buttonLFStop.Click += new System.EventHandler(this.buttonLFStop_Click);
 			// 
 			// buttonLFUp
 			// 
@@ -506,6 +554,31 @@
 			this.panel6.Name = "panel6";
 			this.panel6.Size = new System.Drawing.Size(162, 269);
 			this.panel6.TabIndex = 11;
+			// 
+			// trackBarStepsMotorA
+			// 
+			this.trackBarStepsMotorA.LargeChange = 250;
+			this.trackBarStepsMotorA.Location = new System.Drawing.Point(117, 23);
+			this.trackBarStepsMotorA.Maximum = 4079;
+			this.trackBarStepsMotorA.Minimum = 1;
+			this.trackBarStepsMotorA.Name = "trackBarStepsMotorA";
+			this.trackBarStepsMotorA.Orientation = System.Windows.Forms.Orientation.Vertical;
+			this.trackBarStepsMotorA.Size = new System.Drawing.Size(45, 243);
+			this.trackBarStepsMotorA.SmallChange = 100;
+			this.trackBarStepsMotorA.TabIndex = 10;
+			this.trackBarStepsMotorA.TickFrequency = 256;
+			this.trackBarStepsMotorA.TickStyle = System.Windows.Forms.TickStyle.Both;
+			this.trackBarStepsMotorA.Value = 250;
+			// 
+			// checkBoxMaster
+			// 
+			this.checkBoxMaster.AutoSize = true;
+			this.checkBoxMaster.Location = new System.Drawing.Point(50, 217);
+			this.checkBoxMaster.Name = "checkBoxMaster";
+			this.checkBoxMaster.Size = new System.Drawing.Size(58, 17);
+			this.checkBoxMaster.TabIndex = 9;
+			this.checkBoxMaster.Text = "Master";
+			this.checkBoxMaster.UseVisualStyleBackColor = true;
 			// 
 			// buttonLBDown
 			// 
@@ -584,76 +657,6 @@
 			this.textBox.Size = new System.Drawing.Size(338, 20);
 			this.textBox.TabIndex = 3;
 			// 
-			// checkBoxMaster
-			// 
-			this.checkBoxMaster.AutoSize = true;
-			this.checkBoxMaster.Location = new System.Drawing.Point(50, 217);
-			this.checkBoxMaster.Name = "checkBoxMaster";
-			this.checkBoxMaster.Size = new System.Drawing.Size(58, 17);
-			this.checkBoxMaster.TabIndex = 9;
-			this.checkBoxMaster.Text = "Master";
-			this.checkBoxMaster.UseVisualStyleBackColor = true;
-			// 
-			// trackBarStepsMotorA
-			// 
-			this.trackBarStepsMotorA.LargeChange = 250;
-			this.trackBarStepsMotorA.Location = new System.Drawing.Point(117, 23);
-			this.trackBarStepsMotorA.Maximum = 4079;
-			this.trackBarStepsMotorA.Minimum = 1;
-			this.trackBarStepsMotorA.Name = "trackBarStepsMotorA";
-			this.trackBarStepsMotorA.Orientation = System.Windows.Forms.Orientation.Vertical;
-			this.trackBarStepsMotorA.Size = new System.Drawing.Size(45, 243);
-			this.trackBarStepsMotorA.SmallChange = 100;
-			this.trackBarStepsMotorA.TabIndex = 10;
-			this.trackBarStepsMotorA.TickFrequency = 256;
-			this.trackBarStepsMotorA.TickStyle = System.Windows.Forms.TickStyle.Both;
-			this.trackBarStepsMotorA.Value = 250;
-			// 
-			// trackBarStepsMotorB
-			// 
-			this.trackBarStepsMotorB.LargeChange = 250;
-			this.trackBarStepsMotorB.Location = new System.Drawing.Point(117, 23);
-			this.trackBarStepsMotorB.Maximum = 4079;
-			this.trackBarStepsMotorB.Minimum = 1;
-			this.trackBarStepsMotorB.Name = "trackBarStepsMotorB";
-			this.trackBarStepsMotorB.Orientation = System.Windows.Forms.Orientation.Vertical;
-			this.trackBarStepsMotorB.Size = new System.Drawing.Size(45, 243);
-			this.trackBarStepsMotorB.SmallChange = 100;
-			this.trackBarStepsMotorB.TabIndex = 12;
-			this.trackBarStepsMotorB.TickFrequency = 256;
-			this.trackBarStepsMotorB.TickStyle = System.Windows.Forms.TickStyle.Both;
-			this.trackBarStepsMotorB.Value = 250;
-			// 
-			// trackBarStepsMotorC
-			// 
-			this.trackBarStepsMotorC.LargeChange = 250;
-			this.trackBarStepsMotorC.Location = new System.Drawing.Point(114, 23);
-			this.trackBarStepsMotorC.Maximum = 4079;
-			this.trackBarStepsMotorC.Minimum = 1;
-			this.trackBarStepsMotorC.Name = "trackBarStepsMotorC";
-			this.trackBarStepsMotorC.Orientation = System.Windows.Forms.Orientation.Vertical;
-			this.trackBarStepsMotorC.Size = new System.Drawing.Size(45, 243);
-			this.trackBarStepsMotorC.SmallChange = 100;
-			this.trackBarStepsMotorC.TabIndex = 12;
-			this.trackBarStepsMotorC.TickFrequency = 256;
-			this.trackBarStepsMotorC.TickStyle = System.Windows.Forms.TickStyle.Both;
-			this.trackBarStepsMotorC.Value = 250;
-			// 
-			// trackBarStepsMotorD
-			// 
-			this.trackBarStepsMotorD.LargeChange = 250;
-			this.trackBarStepsMotorD.Location = new System.Drawing.Point(117, 23);
-			this.trackBarStepsMotorD.Maximum = 4079;
-			this.trackBarStepsMotorD.Minimum = 1;
-			this.trackBarStepsMotorD.Name = "trackBarStepsMotorD";
-			this.trackBarStepsMotorD.Orientation = System.Windows.Forms.Orientation.Vertical;
-			this.trackBarStepsMotorD.Size = new System.Drawing.Size(45, 243);
-			this.trackBarStepsMotorD.SmallChange = 100;
-			this.trackBarStepsMotorD.TabIndex = 13;
-			this.trackBarStepsMotorD.TickFrequency = 256;
-			this.trackBarStepsMotorD.TickStyle = System.Windows.Forms.TickStyle.Both;
-			this.trackBarStepsMotorD.Value = 250;
-			// 
 			// button1
 			// 
 			this.button1.Location = new System.Drawing.Point(524, 318);
@@ -684,16 +687,16 @@
 			this.tableLayoutPanel2.ResumeLayout(false);
 			this.panel3.ResumeLayout(false);
 			this.panel3.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.trackBarStepsMotorD)).EndInit();
 			this.panel4.ResumeLayout(false);
 			this.panel4.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.trackBarStepsMotorC)).EndInit();
 			this.panel5.ResumeLayout(false);
 			this.panel5.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.trackBarStepsMotorB)).EndInit();
 			this.panel6.ResumeLayout(false);
 			this.panel6.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.trackBarStepsMotorA)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.trackBarStepsMotorB)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.trackBarStepsMotorC)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.trackBarStepsMotorD)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

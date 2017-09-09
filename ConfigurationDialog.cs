@@ -32,6 +32,11 @@ namespace Hotwire
 			textBoxFrontDistance.Text = Configuration.FrontDistance.ToString(CultureInfo.InvariantCulture);
 			textBoxBackDistance.Text = Configuration.BackDistance.ToString(CultureInfo.InvariantCulture);
 			textBoxSpoolDiameter.Text = Configuration.SpoolDiameter.ToString(CultureInfo.InvariantCulture);
+
+			checkBoxReverseA.Checked = Configuration.ReverseA;
+			checkBoxReverseB.Checked = Configuration.ReverseB;
+			checkBoxReverseC.Checked = Configuration.ReverseC;
+			checkBoxReverseD.Checked = Configuration.ReverseD;
 		}
 
 		private void textBoxNumberValidator(object sender, CancelEventArgs e)
@@ -46,6 +51,11 @@ namespace Hotwire
 			Configuration.FrontDistance = double.Parse(textBoxFrontDistance.Text, CultureInfo.InvariantCulture);
 			Configuration.BackDistance = double.Parse(textBoxBackDistance.Text, CultureInfo.InvariantCulture);
 			Configuration.SpoolDiameter = double.Parse(textBoxSpoolDiameter.Text, CultureInfo.InvariantCulture);
+
+			Configuration.ReverseA = checkBoxReverseA.Checked;
+			Configuration.ReverseB = checkBoxReverseB.Checked;
+			Configuration.ReverseC = checkBoxReverseC.Checked;
+			Configuration.ReverseD = checkBoxReverseD.Checked;
 
 			DialogResult = DialogResult.OK;
 			Close();

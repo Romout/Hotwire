@@ -46,6 +46,10 @@
 			this.label9 = new System.Windows.Forms.Label();
 			this.textBoxBackDistance = new System.Windows.Forms.TextBox();
 			this.label10 = new System.Windows.Forms.Label();
+			this.checkBoxReverseA = new System.Windows.Forms.CheckBox();
+			this.checkBoxReverseB = new System.Windows.Forms.CheckBox();
+			this.checkBoxReverseC = new System.Windows.Forms.CheckBox();
+			this.checkBoxReverseD = new System.Windows.Forms.CheckBox();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -211,11 +215,55 @@
 			this.label10.TabIndex = 4;
 			this.label10.Text = "mm";
 			// 
-			// Configuration
+			// checkBoxReverseA
+			// 
+			this.checkBoxReverseA.AutoSize = true;
+			this.checkBoxReverseA.Location = new System.Drawing.Point(32, 184);
+			this.checkBoxReverseA.Name = "checkBoxReverseA";
+			this.checkBoxReverseA.Size = new System.Drawing.Size(158, 17);
+			this.checkBoxReverseA.TabIndex = 5;
+			this.checkBoxReverseA.Text = "Reverse Motor A (left/back)";
+			this.checkBoxReverseA.UseVisualStyleBackColor = true;
+			// 
+			// checkBoxReverseB
+			// 
+			this.checkBoxReverseB.AutoSize = true;
+			this.checkBoxReverseB.Location = new System.Drawing.Point(32, 207);
+			this.checkBoxReverseB.Name = "checkBoxReverseB";
+			this.checkBoxReverseB.Size = new System.Drawing.Size(155, 17);
+			this.checkBoxReverseB.TabIndex = 5;
+			this.checkBoxReverseB.Text = "Reverse Motor B (left/front)";
+			this.checkBoxReverseB.UseVisualStyleBackColor = true;
+			// 
+			// checkBoxReverseC
+			// 
+			this.checkBoxReverseC.AutoSize = true;
+			this.checkBoxReverseC.Location = new System.Drawing.Point(32, 230);
+			this.checkBoxReverseC.Name = "checkBoxReverseC";
+			this.checkBoxReverseC.Size = new System.Drawing.Size(164, 17);
+			this.checkBoxReverseC.TabIndex = 5;
+			this.checkBoxReverseC.Text = "Reverse Motor C (right/back)";
+			this.checkBoxReverseC.UseVisualStyleBackColor = true;
+			// 
+			// checkBoxReverseD
+			// 
+			this.checkBoxReverseD.AutoSize = true;
+			this.checkBoxReverseD.Location = new System.Drawing.Point(32, 253);
+			this.checkBoxReverseD.Name = "checkBoxReverseD";
+			this.checkBoxReverseD.Size = new System.Drawing.Size(162, 17);
+			this.checkBoxReverseD.TabIndex = 5;
+			this.checkBoxReverseD.Text = "Reverse Motor D (right/front)";
+			this.checkBoxReverseD.UseVisualStyleBackColor = true;
+			// 
+			// ConfigurationDialog
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(556, 376);
+			this.Controls.Add(this.checkBoxReverseD);
+			this.Controls.Add(this.checkBoxReverseC);
+			this.Controls.Add(this.checkBoxReverseB);
+			this.Controls.Add(this.checkBoxReverseA);
 			this.Controls.Add(this.label8);
 			this.Controls.Add(this.label10);
 			this.Controls.Add(this.label7);
@@ -237,7 +285,7 @@
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
-			this.Name = "Configuration";
+			this.Name = "ConfigurationDialog";
 			this.Text = "Configuration";
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
@@ -265,5 +313,9 @@
 		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.TextBox textBoxBackDistance;
 		private System.Windows.Forms.Label label10;
+		private System.Windows.Forms.CheckBox checkBoxReverseA;
+		private System.Windows.Forms.CheckBox checkBoxReverseB;
+		private System.Windows.Forms.CheckBox checkBoxReverseC;
+		private System.Windows.Forms.CheckBox checkBoxReverseD;
 	}
 }

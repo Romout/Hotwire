@@ -28,6 +28,15 @@ namespace Hotwire
 					(byte)((steps3 & 0x0ff00) >> 8), (byte)(steps3 & 0x0ff));
 		}
 
+		public static void SetStepDelays(this SerialPort port, short delay0, short delay1, short delay2, short delay3)
+		{
+			Send(port, 7,
+					(byte)((delay0 & 0x0ff00) >> 8), (byte)(delay0 & 0x0ff),
+					(byte)((delay1 & 0x0ff00) >> 8), (byte)(delay1 & 0x0ff),
+					(byte)((delay2 & 0x0ff00) >> 8), (byte)(delay2 & 0x0ff),
+					(byte)((delay3 & 0x0ff00) >> 8), (byte)(delay3 & 0x0ff));
+		}
+
 		public static void StopMotors(this SerialPort port)
 		{
 			Send(port, 5);

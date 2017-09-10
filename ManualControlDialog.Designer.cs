@@ -75,7 +75,8 @@
 			this.buttonClose = new System.Windows.Forms.Button();
 			this.buttonToggleConnection = new System.Windows.Forms.Button();
 			this.textBox = new System.Windows.Forms.TextBox();
-			this.button1 = new System.Windows.Forms.Button();
+			this.buttonIsAtOrigin = new System.Windows.Forms.Button();
+			this.labelPositionLeft = new System.Windows.Forms.Label();
 			this.tabControl.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
@@ -134,6 +135,7 @@
 			// 
 			// panel1
 			// 
+			this.panel1.Controls.Add(this.labelPositionLeft);
 			this.panel1.Controls.Add(this.buttonLeftDown);
 			this.panel1.Controls.Add(this.buttonLeftRight);
 			this.panel1.Controls.Add(this.buttonLeftLeft);
@@ -155,6 +157,7 @@
 			this.buttonLeftDown.Size = new System.Drawing.Size(32, 32);
 			this.buttonLeftDown.TabIndex = 4;
 			this.buttonLeftDown.UseVisualStyleBackColor = true;
+			this.buttonLeftDown.Click += new System.EventHandler(this.buttonLeftDown_Click);
 			// 
 			// buttonLeftRight
 			// 
@@ -165,6 +168,7 @@
 			this.buttonLeftRight.Size = new System.Drawing.Size(32, 32);
 			this.buttonLeftRight.TabIndex = 4;
 			this.buttonLeftRight.UseVisualStyleBackColor = true;
+			this.buttonLeftRight.Click += new System.EventHandler(this.buttonLeftRight_Click);
 			// 
 			// buttonLeftLeft
 			// 
@@ -175,6 +179,7 @@
 			this.buttonLeftLeft.Size = new System.Drawing.Size(32, 32);
 			this.buttonLeftLeft.TabIndex = 4;
 			this.buttonLeftLeft.UseVisualStyleBackColor = true;
+			this.buttonLeftLeft.Click += new System.EventHandler(this.buttonLeftLeft_Click);
 			// 
 			// buttonLeftStop
 			// 
@@ -196,6 +201,7 @@
 			this.buttonLeftUp.Size = new System.Drawing.Size(32, 32);
 			this.buttonLeftUp.TabIndex = 4;
 			this.buttonLeftUp.UseVisualStyleBackColor = true;
+			this.buttonLeftUp.Click += new System.EventHandler(this.buttonLeftUp_Click);
 			// 
 			// label1
 			// 
@@ -656,22 +662,34 @@
 			this.textBox.Name = "textBox";
 			this.textBox.Size = new System.Drawing.Size(338, 20);
 			this.textBox.TabIndex = 3;
+			this.textBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.textBox_MouseDown);
 			// 
-			// button1
+			// buttonIsAtOrigin
 			// 
-			this.button1.Location = new System.Drawing.Point(524, 318);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 23);
-			this.button1.TabIndex = 4;
-			this.button1.Text = "Set Origin";
-			this.button1.UseVisualStyleBackColor = true;
+			this.buttonIsAtOrigin.Location = new System.Drawing.Point(524, 318);
+			this.buttonIsAtOrigin.Name = "buttonIsAtOrigin";
+			this.buttonIsAtOrigin.Size = new System.Drawing.Size(75, 23);
+			this.buttonIsAtOrigin.TabIndex = 4;
+			this.buttonIsAtOrigin.Text = "Is at Origin!";
+			this.buttonIsAtOrigin.UseVisualStyleBackColor = true;
+			this.buttonIsAtOrigin.Click += new System.EventHandler(this.buttonIsAtOrigin_Click);
+			// 
+			// labelPositionLeft
+			// 
+			this.labelPositionLeft.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.labelPositionLeft.Location = new System.Drawing.Point(0, 246);
+			this.labelPositionLeft.Name = "labelPositionLeft";
+			this.labelPositionLeft.Size = new System.Drawing.Size(331, 23);
+			this.labelPositionLeft.TabIndex = 5;
+			this.labelPositionLeft.Text = "X: -    Y: -   Length A: -   Length B: -";
+			this.labelPositionLeft.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// ManualControlDialog
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(692, 353);
-			this.Controls.Add(this.button1);
+			this.Controls.Add(this.buttonIsAtOrigin);
 			this.Controls.Add(this.textBox);
 			this.Controls.Add(this.buttonToggleConnection);
 			this.Controls.Add(this.buttonClose);
@@ -751,6 +769,7 @@
 		private System.Windows.Forms.TrackBar trackBarStepsMotorC;
 		private System.Windows.Forms.TrackBar trackBarStepsMotorB;
 		private System.Windows.Forms.TrackBar trackBarStepsMotorA;
-		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button buttonIsAtOrigin;
+		private System.Windows.Forms.Label labelPositionLeft;
 	}
 }

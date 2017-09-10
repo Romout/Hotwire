@@ -18,6 +18,13 @@ namespace Hotwire
 			InitializeComponent();
 		}
 
+		protected override void OnLoad(EventArgs e)
+		{
+			base.OnLoad(e);
+
+			UpdatePositionInfo();
+		}
+
 		private void buttonClose_Click(object sender, EventArgs e)
 		{
 			Close();
@@ -149,11 +156,101 @@ namespace Hotwire
 		// TODO: Short timeout
 		private void PortReader()
 		{
-			textBox.Text = Port.ReadLine();
+			while (Port.BytesToRead > 0)
+			{
+				string line = Port.ReadLine();
+				if (!string.IsNullOrEmpty(line))
+					textBox.Text = line;
+			}
+		}
+
+		private void MoveRelative(double x, double y)
+		{
+			x = Configuration.X + x;
+			y = Configuration.Y + y;
+
+			MoveAbsolute(x, y);
+		}
+
+		private void MoveAbsolute(double x, double y)
+		{
+			Vector2 vec = new Vector2(x, y) - new Vector2(-Configuration.SpoolDiameter / 2, 0);
+			double newLenA = vec.Length;
+
+			vec = new Vector2(x, y) - new Vector2(Configuration.LeftDistance + Configuration.SpoolDiameter / 2, 0);
+			double newLenB = vec.Length;
+
+			short stepsA = (short)(Configuration.StepsA * ((newLenA - Configuration.LengthA) / 10.0));
+			short stepsB = (short)(Configuration.StepsB * ((newLenB - Configuration.LengthB) / 10.0));
+
+			stepsA = Invert(stepsA, Configuration.ReverseA, true);
+			stepsB = Invert(stepsB, Configuration.ReverseB, true);
+
+			// Max-Speed: delay of 800 for now
+			short maxSteps = Math.Max(Math.Abs(stepsA), Math.Abs(stepsB));
+			int totalTime = maxSteps * 800;
+
+			short delayA = (short)(Math.Abs(totalTime / stepsA));
+			short delayB = (short)(Math.Abs(totalTime / stepsB));
+
+			//Port.SetStepDelays(delayA, delayB, 0, 0);
+			
+			Port.MoveMotors(stepsA, stepsB, 0, 0);
+			PortReader();
+
+			Configuration.X = x;
+			Configuration.Y = y;
+			Configuration.LengthA = newLenA;
+			Configuration.LengthB = newLenB;
+
+			UpdatePositionInfo();
+		}
+
+		private void UpdatePositionInfo()
+		{
+			labelPositionLeft.Text = string.Format("X: {0:g5}   Y: {1:g5}   Length A: {2:g5}   Length B: {3:g5}", Configuration.X, Configuration.Y, Configuration.LengthA, Configuration.LengthB);
+		}
+
+		private void buttonLeftUp_Click(object sender, EventArgs e)
+		{
+			MoveRelative(0, -10);
+		}
+
+		private void buttonLeftDown_Click(object sender, EventArgs e)
+		{
+			MoveRelative(0, 10);
+		}
+
+		private void buttonLeftLeft_Click(object sender, EventArgs e)
+		{
+			MoveRelative(-10, 0);
+		}
+
+		private void buttonLeftRight_Click(object sender, EventArgs e)
+		{
+			MoveRelative(10, 0);
+		}
+
+		private void buttonIsAtOrigin_Click(object sender, EventArgs e)
+		{
+			Configuration.LengthA = Configuration.OriginA;
+			Configuration.LengthB = Configuration.OriginB;
+			Configuration.LengthC = Configuration.OriginC;
+			Configuration.LengthD = Configuration.OriginD;
+
+			Configuration.X = Configuration.OriginOffsetX;
+			Configuration.Y = Configuration.OriginOffsetY;
+
+			UpdatePositionInfo();
 		}
 
 		public SerialPort Port { get; set; }
 
 		public Configuration Configuration { get; set; }
+
+		private void textBox_MouseDown(object sender, MouseEventArgs e)
+		{
+			PortReader();
+		}
 	}
 }

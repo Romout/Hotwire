@@ -28,55 +28,36 @@ namespace Hotwire
 			if (Data == null)
 				return;
 
-			double minx = double.MaxValue;
-			double maxx = double.MinValue;
-			double miny = double.MaxValue;
-			double maxy = double.MinValue;
-
-			IEnumerable<Vector2> leftProfile = null;
-			if (Data.LeftProfile != null)
-				leftProfile = Data.LeftProfile.Data.Select(v => v * Data.ScaleLeft + new Vector2(Data.LeftXOffset, Data.LeftYOffset));
-
-			IEnumerable<Vector2> rightProfile = null;
-			if (Data.RightProfile != null)
-				rightProfile = Data.RightProfile.Data.Select(v => v * Data.ScaleRight + new Vector2(Data.RightXOffset, Data.RightYOffset));
+			double minx, maxx, miny, maxy, scale, width, height;
+			IEnumerable<Vector2> leftProfile, rightProfile;
+			Data.ProcessProfiles(Width, out leftProfile, out rightProfile, out minx, out maxx, out miny, out maxy, out scale, out width, out height);
 
 			if (leftProfile != null)
 			{
-				minx = leftProfile.Select(v => v.x).Min();
-				maxx = leftProfile.Select(v => v.x).Max();
-				miny = leftProfile.Select(v => v.y).Min();
-				maxy = leftProfile.Select(v => v.y).Max();
+				DrawProfile(leftProfile, Pens.Green, minx, miny, width, height, scale, e);
 			}
 
 			if (rightProfile != null)
 			{
-				minx = Math.Min(minx, rightProfile.Select(v => v.x).Min());
-				maxx = Math.Max(maxx, rightProfile.Select(v => v.x).Max());
-				miny = Math.Min(miny, rightProfile.Select(v => v.y).Min());
-				maxy = Math.Max(maxy, rightProfile.Select(v => v.y).Max());
+				DrawProfile(rightProfile, Pens.Blue, minx, miny, width, height, scale, e);
 			}
 
-			double scale = Width / (maxx - minx);
-			double height = (maxy - miny) * scale;
+			// Draw origin
+			Vector2 point = (Data.Origin - new Vector2(minx, miny)) * scale;
+			point.x = point.x + (Width - width) / 2;
+			point.y = (Height + height / 2) / 2 - point.y;
 
-			if (leftProfile != null)
-			{
-				DrawProfile(leftProfile, Pens.Green, minx, miny, height, scale, e);
-			}
-
-			if (rightProfile != null)
-			{
-				DrawProfile(rightProfile, Pens.Blue, minx, miny, height, scale, e);
-			}
+			e.Graphics.DrawLine(Pens.Red, point - new Vector2(2, 0), point + new Vector2(2, 0));
+			e.Graphics.DrawLine(Pens.Red, point - new Vector2(0, 2), point + new Vector2(0, 2));
 		}
 
-		private void DrawProfile(IEnumerable<Vector2> profile, Pen pen, double minx, double miny, double height, double scale, PaintEventArgs e)
+		private void DrawProfile(IEnumerable<Vector2> profile, Pen pen, double minx, double miny, double width, double height, double scale, PaintEventArgs e)
 		{
 			Vector2 last = null;
 			foreach(Vector2 vec in profile)
 			{
 				Vector2 point = (vec - new Vector2(minx, miny)) * scale;
+				point.x = point.x + (Width - width) / 2;
 				point.y = (Height + height / 2) / 2 - point.y;
 				if (last != null)
 				{

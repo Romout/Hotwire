@@ -33,6 +33,19 @@ namespace Hotwire
 			textBoxBackDistance.Text = Configuration.BackDistance.ToString(CultureInfo.InvariantCulture);
 			textBoxSpoolDiameter.Text = Configuration.SpoolDiameter.ToString(CultureInfo.InvariantCulture);
 
+			textBoxOriginA.Text = Configuration.OriginA.ToString(CultureInfo.InvariantCulture);
+			textBoxOriginB.Text = Configuration.OriginB.ToString(CultureInfo.InvariantCulture);
+			textBoxOriginC.Text = Configuration.OriginC.ToString(CultureInfo.InvariantCulture);
+			textBoxOriginD.Text = Configuration.OriginD.ToString(CultureInfo.InvariantCulture);
+
+			textBoxXOffset.Text = Configuration.OriginOffsetX.ToString(CultureInfo.InvariantCulture);
+			textBoxYOffset.Text = Configuration.OriginOffsetY.ToString(CultureInfo.InvariantCulture);
+
+			textBoxStepsMotorA.Text = Configuration.StepsA.ToString(CultureInfo.InvariantCulture);
+			textBoxStepsMotorB.Text = Configuration.StepsB.ToString(CultureInfo.InvariantCulture);
+			textBoxStepsMotorC.Text = Configuration.StepsC.ToString(CultureInfo.InvariantCulture);
+			textBoxStepsMotorD.Text = Configuration.StepsD.ToString(CultureInfo.InvariantCulture);
+
 			checkBoxReverseA.Checked = Configuration.ReverseA;
 			checkBoxReverseB.Checked = Configuration.ReverseB;
 			checkBoxReverseC.Checked = Configuration.ReverseC;
@@ -51,6 +64,19 @@ namespace Hotwire
 			Configuration.FrontDistance = double.Parse(textBoxFrontDistance.Text, CultureInfo.InvariantCulture);
 			Configuration.BackDistance = double.Parse(textBoxBackDistance.Text, CultureInfo.InvariantCulture);
 			Configuration.SpoolDiameter = double.Parse(textBoxSpoolDiameter.Text, CultureInfo.InvariantCulture);
+
+			Configuration.OriginA = double.Parse(textBoxOriginA.Text, CultureInfo.InvariantCulture);
+			Configuration.OriginB = double.Parse(textBoxOriginB.Text, CultureInfo.InvariantCulture);
+			Configuration.OriginC = double.Parse(textBoxOriginC.Text, CultureInfo.InvariantCulture);
+			Configuration.OriginD = double.Parse(textBoxOriginD.Text, CultureInfo.InvariantCulture);
+
+			Configuration.OriginOffsetX = double.Parse(textBoxXOffset.Text, CultureInfo.InvariantCulture);
+			Configuration.OriginOffsetY = double.Parse(textBoxYOffset.Text, CultureInfo.InvariantCulture);
+
+			Configuration.StepsA = double.Parse(textBoxStepsMotorA.Text, CultureInfo.InvariantCulture);
+			Configuration.StepsB = double.Parse(textBoxStepsMotorB.Text, CultureInfo.InvariantCulture);
+			Configuration.StepsC = double.Parse(textBoxStepsMotorC.Text, CultureInfo.InvariantCulture);
+			Configuration.StepsD = double.Parse(textBoxStepsMotorD.Text, CultureInfo.InvariantCulture);
 
 			Configuration.ReverseA = checkBoxReverseA.Checked;
 			Configuration.ReverseB = checkBoxReverseB.Checked;

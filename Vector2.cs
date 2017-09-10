@@ -23,6 +23,14 @@ namespace Hotwire
 			this.y = y;
 		}
 
+		public double Length
+		{
+			get
+			{
+				return Math.Sqrt(x * x + y * y);
+			}
+		}
+
 		public static Vector2 operator *(Vector2 vec, double scale)
 		{
 			return new Vector2(vec.x * scale, vec.y * scale);

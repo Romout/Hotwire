@@ -19,6 +19,8 @@ namespace Hotwire
 		private Data _data = new Data();
 		private SerialPort _port;
 
+		private bool _settingOrigin;
+
 		public MainForm()
 		{
 			InitializeComponent();
@@ -99,7 +101,7 @@ namespace Hotwire
 			{
 				textBoxInputDataLeft.Text = path;
 				_data.LeftInputPath = path;
-
+				RefreshPreview();
 			}
 		}
 
@@ -110,6 +112,7 @@ namespace Hotwire
 			{
 				textBoxInputDataRight.Text = path;
 				_data.RightInputPath = path;
+				RefreshPreview();
 			}
 		}
 
@@ -258,6 +261,49 @@ namespace Hotwire
 
 			_port = new SerialPort(portName, 9600);
 			_port.Open();
+		}
+
+		private void textBoxTotalDisplayScale_TextChanged(object sender, EventArgs e)
+		{
+			double scale;
+			if (double.TryParse(textBoxTotalDisplayScale.Text, out scale))
+			{
+				_data.ViewScale = scale;
+				RefreshPreview();
+			}
+		}
+
+		private void UpdateOrigin(MouseEventArgs e)
+		{
+			double minx, maxx, miny, maxy, scale, width, height;
+			IEnumerable<Vector2> leftProfile, rightProfile;
+			_data.ProcessProfiles(panelPreview.Width, out leftProfile, out rightProfile, out minx, out maxx, out miny, out maxy, out scale, out width, out height);
+
+			double xPoint = (e.X - (panelPreview.Width - width) / 2) / scale + minx;
+			double yPoint = ((panelPreview.Height + height / 2) / 2 - e.Y) / scale + miny;
+
+			labelInfo.Text = string.Format("Setting origin at {0} / {1} (Adapt configuration to match lengths!)", xPoint, yPoint);
+
+			_data.Origin = new Vector2(xPoint, yPoint);
+			RefreshPreview();
+		}
+
+		private void panelPreview_MouseDown(object sender, MouseEventArgs e)
+		{
+			_settingOrigin = true;
+			UpdateOrigin(e);
+		}
+
+		private void panelPreview_MouseUp(object sender, MouseEventArgs e)
+		{
+			_settingOrigin = false;
+			UpdateOrigin(e);
+		}
+
+		private void panelPreview_MouseMove(object sender, MouseEventArgs e)
+		{
+			if (_settingOrigin)
+				UpdateOrigin(e);
 		}
 	}
 }

@@ -67,10 +67,11 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.panel1 = new System.Windows.Forms.Panel();
-			this.label11 = new System.Windows.Forms.Label();
-			this.textBoxTotalDisplayScale = new System.Windows.Forms.TextBox();
 			this.labelInfo = new System.Windows.Forms.Label();
+			this.textBoxTotalDisplayScale = new System.Windows.Forms.TextBox();
+			this.label11 = new System.Windows.Forms.Label();
 			this.panelPreview = new Hotwire.PreviewPanel();
+			this.buttonCut = new System.Windows.Forms.Button();
 			this.menuStrip1.SuspendLayout();
 			this.panel3.SuspendLayout();
 			this.panel2.SuspendLayout();
@@ -463,6 +464,7 @@
 			// panel1
 			// 
 			this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.panel1.Controls.Add(this.buttonCut);
 			this.panel1.Controls.Add(this.labelInfo);
 			this.panel1.Controls.Add(this.textBoxTotalDisplayScale);
 			this.panel1.Controls.Add(this.label11);
@@ -472,15 +474,14 @@
 			this.panel1.Size = new System.Drawing.Size(934, 32);
 			this.panel1.TabIndex = 5;
 			// 
-			// label11
+			// labelInfo
 			// 
-			this.label11.Dock = System.Windows.Forms.DockStyle.Left;
-			this.label11.Location = new System.Drawing.Point(0, 0);
-			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(109, 30);
-			this.label11.TabIndex = 0;
-			this.label11.Text = "Total Display Scale:";
-			this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.labelInfo.AutoSize = true;
+			this.labelInfo.Location = new System.Drawing.Point(280, 8);
+			this.labelInfo.Name = "labelInfo";
+			this.labelInfo.Size = new System.Drawing.Size(210, 13);
+			this.labelInfo.TabIndex = 3;
+			this.labelInfo.Text = "Left: width / height      Right: width / height";
 			// 
 			// textBoxTotalDisplayScale
 			// 
@@ -491,14 +492,15 @@
 			this.textBoxTotalDisplayScale.TextChanged += new System.EventHandler(this.textBoxTotalDisplayScale_TextChanged);
 			this.textBoxTotalDisplayScale.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateDouble);
 			// 
-			// labelInfo
+			// label11
 			// 
-			this.labelInfo.AutoSize = true;
-			this.labelInfo.Location = new System.Drawing.Point(280, 8);
-			this.labelInfo.Name = "labelInfo";
-			this.labelInfo.Size = new System.Drawing.Size(210, 13);
-			this.labelInfo.TabIndex = 3;
-			this.labelInfo.Text = "Left: width / height      Right: width / height";
+			this.label11.Dock = System.Windows.Forms.DockStyle.Left;
+			this.label11.Location = new System.Drawing.Point(0, 0);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(109, 30);
+			this.label11.TabIndex = 0;
+			this.label11.Text = "Total Display Scale:";
+			this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// panelPreview
 			// 
@@ -511,6 +513,16 @@
 			this.panelPreview.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelPreview_MouseDown);
 			this.panelPreview.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelPreview_MouseMove);
 			this.panelPreview.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelPreview_MouseUp);
+			// 
+			// buttonCut
+			// 
+			this.buttonCut.Location = new System.Drawing.Point(854, 3);
+			this.buttonCut.Name = "buttonCut";
+			this.buttonCut.Size = new System.Drawing.Size(75, 23);
+			this.buttonCut.TabIndex = 4;
+			this.buttonCut.Text = "Cut!";
+			this.buttonCut.UseVisualStyleBackColor = true;
+			this.buttonCut.Click += new System.EventHandler(this.buttonCut_Click);
 			// 
 			// MainForm
 			// 
@@ -583,6 +595,7 @@
 		private System.Windows.Forms.TextBox textBoxTotalDisplayScale;
 		private System.Windows.Forms.Label label11;
 		private System.Windows.Forms.Label labelInfo;
+		private System.Windows.Forms.Button buttonCut;
 	}
 }
 

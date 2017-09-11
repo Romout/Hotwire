@@ -305,5 +305,25 @@ namespace Hotwire
 			if (_settingOrigin)
 				UpdateOrigin(e);
 		}
+
+		private void buttonCut_Click(object sender, EventArgs e)
+		{
+			double minx, maxx, miny, maxy, scale, width, height;
+			IEnumerable<Vector2> leftProfile, rightProfile;
+			_data.ProcessProfiles(panelPreview.Width, out leftProfile, out rightProfile, out minx, out maxx, out miny, out maxy, out scale, out width, out height);
+
+			HotwireControl control = new HotwireControl(_configuration, _port);
+			Vector2 last = null;
+			foreach (Vector2 point in leftProfile)
+			{
+				if (last != null)
+				{
+					Vector2 vec = point - last;
+					control.MoveRelative(vec.x, vec.y);
+					System.Threading.Thread.Sleep(500);
+				}
+				last = point;
+			}
+		}
 	}
 }

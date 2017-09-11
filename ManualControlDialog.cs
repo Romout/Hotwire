@@ -13,6 +13,8 @@ namespace Hotwire
 {
 	public partial class ManualControlDialog : Form
 	{
+		private HotwireControl _control;
+
 		public ManualControlDialog()
 		{
 			InitializeComponent();
@@ -22,6 +24,8 @@ namespace Hotwire
 		{
 			base.OnLoad(e);
 
+			_control = new HotwireControl(Configuration, Port);
+			_control.AfterMovement += (s, ev) => UpdatePositionInfo();
 			UpdatePositionInfo();
 		}
 
@@ -40,19 +44,10 @@ namespace Hotwire
 			buttonToggleConnection.BackColor = Port.IsOpen ? Color.FromArgb(0, 192, 0) : Color.Red;
 		}
 
-		private short Invert(decimal value, bool configuration, bool invert)
-		{
-			short steps = (short)value;
-			if ((invert && !configuration) || (configuration && !invert))
-				steps = (short)(-steps);
-
-			return steps;
-		}
-
 		private void buttonLBUp_Click(object sender, EventArgs e)
 		{
 			textBox.Text = "";
-			short steps = Invert(trackBarStepsMotorA.Value, Configuration.ReverseA, false);
+			short steps = HotwireControl.Invert(trackBarStepsMotorA.Value, Configuration.ReverseA, false);
 			if (checkBoxMaster.Checked == false)
 				Port.MoveMotor(1, steps);
 			else
@@ -64,7 +59,7 @@ namespace Hotwire
 		private void buttonLBDown_Click(object sender, EventArgs e)
 		{
 			textBox.Text = "";
-			short steps = Invert(trackBarStepsMotorA.Value, Configuration.ReverseA, true);
+			short steps = HotwireControl.Invert(trackBarStepsMotorA.Value, Configuration.ReverseA, true);
 			if (checkBoxMaster.Checked == false)
 				Port.MoveMotor(1, steps);
 			else
@@ -76,42 +71,42 @@ namespace Hotwire
 		private void buttonLFUp_Click(object sender, EventArgs e)
 		{
 			textBox.Text = "";
-			short steps = Invert(trackBarStepsMotorB.Value, Configuration.ReverseB, false);
+			short steps = HotwireControl.Invert(trackBarStepsMotorB.Value, Configuration.ReverseB, false);
 			Port.MoveMotor(2, steps);
 		}
 
 		private void buttonLFDown_Click(object sender, EventArgs e)
 		{
 			textBox.Text = "";
-			short steps = Invert(trackBarStepsMotorB.Value, Configuration.ReverseB, true);
+			short steps = HotwireControl.Invert(trackBarStepsMotorB.Value, Configuration.ReverseB, true);
 			Port.MoveMotor(2, steps);
 		}
 
 		private void buttonRBUp_Click(object sender, EventArgs e)
 		{
 			textBox.Text = "";
-			short steps = Invert(trackBarStepsMotorC.Value, Configuration.ReverseC, false);
+			short steps = HotwireControl.Invert(trackBarStepsMotorC.Value, Configuration.ReverseC, false);
 			Port.MoveMotor(3, steps);
 		}
 
 		private void buttonRBDown_Click(object sender, EventArgs e)
 		{
 			textBox.Text = "";
-			short steps = Invert(trackBarStepsMotorC.Value, Configuration.ReverseC, true);
+			short steps = HotwireControl.Invert(trackBarStepsMotorC.Value, Configuration.ReverseC, true);
 			Port.MoveMotor(3, steps);
 		}
 
 		private void buttonRLUp_Click(object sender, EventArgs e)
 		{
 			textBox.Text = "";
-			short steps = Invert(trackBarStepsMotorD.Value, Configuration.ReverseD, false);
+			short steps = HotwireControl.Invert(trackBarStepsMotorD.Value, Configuration.ReverseD, false);
 			Port.MoveMotor(4, 1);
 		}
 
 		private void buttonRLDown_Click(object sender, EventArgs e)
 		{
 			textBox.Text = "";
-			short steps = Invert(trackBarStepsMotorD.Value, Configuration.ReverseD, true);
+			short steps = HotwireControl.Invert(trackBarStepsMotorD.Value, Configuration.ReverseD, true);
 			Port.MoveMotor(4, steps);
 		}
 
@@ -164,48 +159,6 @@ namespace Hotwire
 			}
 		}
 
-		private void MoveRelative(double x, double y)
-		{
-			x = Configuration.X + x;
-			y = Configuration.Y + y;
-
-			MoveAbsolute(x, y);
-		}
-
-		private void MoveAbsolute(double x, double y)
-		{
-			Vector2 vec = new Vector2(x, y) - new Vector2(-Configuration.SpoolDiameter / 2, 0);
-			double newLenA = vec.Length;
-
-			vec = new Vector2(x, y) - new Vector2(Configuration.LeftDistance + Configuration.SpoolDiameter / 2, 0);
-			double newLenB = vec.Length;
-
-			short stepsA = (short)(Configuration.StepsA * ((newLenA - Configuration.LengthA) / 10.0));
-			short stepsB = (short)(Configuration.StepsB * ((newLenB - Configuration.LengthB) / 10.0));
-
-			stepsA = Invert(stepsA, Configuration.ReverseA, true);
-			stepsB = Invert(stepsB, Configuration.ReverseB, true);
-
-			// Max-Speed: delay of 800 for now
-			short maxSteps = Math.Max(Math.Abs(stepsA), Math.Abs(stepsB));
-			int totalTime = maxSteps * 800;
-
-			short delayA = (short)(Math.Abs(totalTime / stepsA));
-			short delayB = (short)(Math.Abs(totalTime / stepsB));
-
-			//Port.SetStepDelays(delayA, delayB, 0, 0);
-			
-			Port.MoveMotors(stepsA, stepsB, 0, 0);
-			PortReader();
-
-			Configuration.X = x;
-			Configuration.Y = y;
-			Configuration.LengthA = newLenA;
-			Configuration.LengthB = newLenB;
-
-			UpdatePositionInfo();
-		}
-
 		private void UpdatePositionInfo()
 		{
 			labelPositionLeft.Text = string.Format("X: {0:g5}   Y: {1:g5}   Length A: {2:g5}   Length B: {3:g5}", Configuration.X, Configuration.Y, Configuration.LengthA, Configuration.LengthB);
@@ -213,22 +166,22 @@ namespace Hotwire
 
 		private void buttonLeftUp_Click(object sender, EventArgs e)
 		{
-			MoveRelative(0, -10);
+			_control.MoveRelative(0, -10);
 		}
 
 		private void buttonLeftDown_Click(object sender, EventArgs e)
 		{
-			MoveRelative(0, 10);
+			_control.MoveRelative(0, 10);
 		}
 
 		private void buttonLeftLeft_Click(object sender, EventArgs e)
 		{
-			MoveRelative(-10, 0);
+			_control.MoveRelative(-10, 0);
 		}
 
 		private void buttonLeftRight_Click(object sender, EventArgs e)
 		{
-			MoveRelative(10, 0);
+			_control.MoveRelative(10, 0);
 		}
 
 		private void buttonIsAtOrigin_Click(object sender, EventArgs e)

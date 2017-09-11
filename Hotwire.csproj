@@ -54,6 +54,7 @@
     <Compile Include="ConfigurationDialog.Designer.cs">
       <DependentUpon>ConfigurationDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="HotwireControl.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

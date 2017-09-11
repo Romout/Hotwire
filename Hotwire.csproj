@@ -100,6 +100,7 @@
     </Compile>
     <None Include="Arduino\HotwireCNC\HotwireCNC-AccStepper\HotwireCNC-AccStepper.ino" />
     <None Include="Arduino\HotwireCNC\HotwireCNC-CheapStepper\HotwireCNC-CheapStepper.ino" />
+    <None Include="Arduino\HotwireCNC\HotwireCNC-Simplest\HotwireCNC-Simplest.ino" />
     <None Include="Arduino\HotwireCNC\HotwireCNC\HotwireCNC.ino" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -128,6 +129,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Arduino\HotwireCNC\HotwireCNC-Simplest\SimpleStepper.cpp" />
+    <Content Include="Arduino\HotwireCNC\HotwireCNC-Simplest\SimpleStepper.h" />
+    <Content Include="Arduino\HotwireCNC\HotwireCNC\SimpleStepper.cpp" />
+    <Content Include="Arduino\HotwireCNC\HotwireCNC\SimpleStepper.h" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

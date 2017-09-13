@@ -327,7 +327,6 @@ namespace Hotwire
 				{
 					Vector2 vec = point - last;
 					control.MoveRelative(vec.x, vec.y);
-					System.Threading.Thread.Sleep(500);
 				}
 				last = point;
 			}

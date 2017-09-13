@@ -15,6 +15,7 @@ SimpleStepper stepperC;
 SimpleStepper stepperD;
 
 bool shallMove[4];
+bool notificationSend = false;
 int stepperSources[4];
 int stepperTargets[4];
 int maxSteps = 0;
@@ -84,6 +85,7 @@ void run() {
         //if (i == 0)
           //Serial.print(newSteps);
         int count = newSteps - steppers[i].getStep();
+        // Loop required? I guess no because maxSteps matches longest way which means, no stepper would ever have to skip a step
         if (count > 0)
           steppers[i].stepCW();
         else if (count < 0)
@@ -92,7 +94,10 @@ void run() {
     }
     steps++;
     delayMicroseconds(1200);
-    //Serial.write("\n");
+  }
+  else if (notificationSend == false) {
+    Serial.write(254);
+    notificationSend = true;
   }
 }
 
@@ -155,6 +160,8 @@ void loop() {
       }
       Serial.print(" #");
       Serial.print(maxSteps);
+
+      notificationSend = false;
       steps = 0;
     }
     else if (buffer[0] < 5) {
@@ -177,6 +184,8 @@ void loop() {
       maxSteps = abs(stepperTargets[motorId] - stepperSources[motorId]);
       Serial.print(" #");
       Serial.print(maxSteps);
+
+      notificationSend = false;
       steps = 0;
     }
     else if (buffer[0] == 5) {

@@ -54,6 +54,12 @@
     <Compile Include="ConfigurationDialog.Designer.cs">
       <DependentUpon>ConfigurationDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="DebugForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DebugForm.Designer.cs">
+      <DependentUpon>DebugForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="HotwireControl.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -77,10 +83,15 @@
     <Compile Include="Program.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SerialPortExtensions.cs" />
+    <Compile Include="HotwirePort.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Vector2.cs" />
     <EmbeddedResource Include="ConfigurationDialog.resx">
       <DependentUpon>ConfigurationDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DebugForm.resx">
+      <DependentUpon>DebugForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

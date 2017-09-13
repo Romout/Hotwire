@@ -41,6 +41,7 @@
 			this.toolStripMenuItemPortSelection = new System.Windows.Forms.ToolStripMenuItem();
 			this.cOM1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.manualMovementsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.showHideDebugInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.panel3 = new System.Windows.Forms.Panel();
 			this.buttonLoadDataRight = new System.Windows.Forms.Button();
 			this.textBoxOffsetYRight = new System.Windows.Forms.TextBox();
@@ -67,11 +68,11 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.buttonCut = new System.Windows.Forms.Button();
 			this.labelInfo = new System.Windows.Forms.Label();
 			this.textBoxTotalDisplayScale = new System.Windows.Forms.TextBox();
 			this.label11 = new System.Windows.Forms.Label();
 			this.panelPreview = new Hotwire.PreviewPanel();
-			this.buttonCut = new System.Windows.Forms.Button();
 			this.menuStrip1.SuspendLayout();
 			this.panel3.SuspendLayout();
 			this.panel2.SuspendLayout();
@@ -144,7 +145,8 @@
 			this.hardwareToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.configurationToolStripMenuItem,
             this.toolStripMenuItemPortSelection,
-            this.manualMovementsToolStripMenuItem});
+            this.manualMovementsToolStripMenuItem,
+            this.showHideDebugInformationToolStripMenuItem});
 			this.hardwareToolStripMenuItem.Name = "hardwareToolStripMenuItem";
 			this.hardwareToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
 			this.hardwareToolStripMenuItem.Text = "&Hardware";
@@ -152,7 +154,7 @@
 			// configurationToolStripMenuItem
 			// 
 			this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
-			this.configurationToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+			this.configurationToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
 			this.configurationToolStripMenuItem.Text = "&Configuration...";
 			this.configurationToolStripMenuItem.Click += new System.EventHandler(this.configurationToolStripMenuItem_Click);
 			// 
@@ -161,7 +163,7 @@
 			this.toolStripMenuItemPortSelection.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cOM1ToolStripMenuItem});
 			this.toolStripMenuItemPortSelection.Name = "toolStripMenuItemPortSelection";
-			this.toolStripMenuItemPortSelection.Size = new System.Drawing.Size(189, 22);
+			this.toolStripMenuItemPortSelection.Size = new System.Drawing.Size(237, 22);
 			this.toolStripMenuItemPortSelection.Text = "Port Selection";
 			this.toolStripMenuItemPortSelection.DropDownOpening += new System.EventHandler(this.toolStripMenuItemPortSelection_DropDownOpening);
 			// 
@@ -174,9 +176,16 @@
 			// manualMovementsToolStripMenuItem
 			// 
 			this.manualMovementsToolStripMenuItem.Name = "manualMovementsToolStripMenuItem";
-			this.manualMovementsToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+			this.manualMovementsToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
 			this.manualMovementsToolStripMenuItem.Text = "Manual Movements...";
 			this.manualMovementsToolStripMenuItem.Click += new System.EventHandler(this.manualMovementsToolStripMenuItem_Click);
+			// 
+			// showHideDebugInformationToolStripMenuItem
+			// 
+			this.showHideDebugInformationToolStripMenuItem.Name = "showHideDebugInformationToolStripMenuItem";
+			this.showHideDebugInformationToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+			this.showHideDebugInformationToolStripMenuItem.Text = "Show/Hide Debug Information";
+			this.showHideDebugInformationToolStripMenuItem.Click += new System.EventHandler(this.showHideDebugInformationToolStripMenuItem_Click);
 			// 
 			// panel3
 			// 
@@ -474,6 +483,16 @@
 			this.panel1.Size = new System.Drawing.Size(934, 32);
 			this.panel1.TabIndex = 5;
 			// 
+			// buttonCut
+			// 
+			this.buttonCut.Location = new System.Drawing.Point(854, 3);
+			this.buttonCut.Name = "buttonCut";
+			this.buttonCut.Size = new System.Drawing.Size(75, 23);
+			this.buttonCut.TabIndex = 4;
+			this.buttonCut.Text = "Cut!";
+			this.buttonCut.UseVisualStyleBackColor = true;
+			this.buttonCut.Click += new System.EventHandler(this.buttonCut_Click);
+			// 
 			// labelInfo
 			// 
 			this.labelInfo.AutoSize = true;
@@ -513,16 +532,6 @@
 			this.panelPreview.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelPreview_MouseDown);
 			this.panelPreview.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelPreview_MouseMove);
 			this.panelPreview.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelPreview_MouseUp);
-			// 
-			// buttonCut
-			// 
-			this.buttonCut.Location = new System.Drawing.Point(854, 3);
-			this.buttonCut.Name = "buttonCut";
-			this.buttonCut.Size = new System.Drawing.Size(75, 23);
-			this.buttonCut.TabIndex = 4;
-			this.buttonCut.Text = "Cut!";
-			this.buttonCut.UseVisualStyleBackColor = true;
-			this.buttonCut.Click += new System.EventHandler(this.buttonCut_Click);
 			// 
 			// MainForm
 			// 
@@ -596,6 +605,7 @@
 		private System.Windows.Forms.Label label11;
 		private System.Windows.Forms.Label labelInfo;
 		private System.Windows.Forms.Button buttonCut;
+		private System.Windows.Forms.ToolStripMenuItem showHideDebugInformationToolStripMenuItem;
 	}
 }
 

@@ -197,7 +197,7 @@ namespace Hotwire
 			UpdatePositionInfo();
 		}
 
-		public SerialPort Port { get; set; }
+		public HotwirePort Port { get; set; }
 
 		public Configuration Configuration { get; set; }
 

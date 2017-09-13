@@ -15,9 +15,10 @@ namespace Hotwire
 {
 	public partial class MainForm : Form
 	{
+		private DebugForm _debugForm;
 		private Configuration _configuration;
 		private Data _data = new Data();
-		private SerialPort _port;
+		private HotwirePort _port;
 
 		private bool _settingOrigin;
 
@@ -33,6 +34,8 @@ namespace Hotwire
 
 			path = Path.Combine(path, "configuration.xml");
 			_configuration = LoadData<Configuration>(path);
+
+			_debugForm = new DebugForm();
 		}
 
 		private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -257,10 +260,14 @@ namespace Hotwire
 		{
 			string portName = ((ToolStripMenuItem)sender).Text;
 			if (_port != null && _port.IsOpen)
+			{
 				_port.Close();
-
-			_port = new SerialPort(portName, 9600);
+				_port.Dispose();
+			}
+			_port = new HotwirePort(portName, 9600);
 			_port.Open();
+
+			_debugForm.Port = _port;
 		}
 
 		private void textBoxTotalDisplayScale_TextChanged(object sender, EventArgs e)
@@ -324,6 +331,16 @@ namespace Hotwire
 				}
 				last = point;
 			}
+		}
+
+		private void showHideDebugInformationToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (_debugForm.Visible)
+				_debugForm.Hide();
+			else
+				_debugForm.Show();
+
+			showHideDebugInformationToolStripMenuItem.Checked = _debugForm.Visible;
 		}
 	}
 }

@@ -11,9 +11,9 @@ namespace Hotwire
 	{
 		public event EventHandler AfterMovement;
 		private Configuration _configuration;
-		private SerialPort _port;
+		private HotwirePort _port;
 
-		public HotwireControl(Configuration configuration, SerialPort port)
+		public HotwireControl(Configuration configuration, HotwirePort port)
 		{
 			_configuration = configuration;
 			_port = port;

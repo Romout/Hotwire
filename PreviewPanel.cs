@@ -28,6 +28,7 @@ namespace Hotwire
 			if (Data == null)
 				return;
 
+			bool profileAvailable = false;
 			double minx, maxx, miny, maxy, scale, width, height;
 			IEnumerable<Vector2> leftProfile, rightProfile;
 			Data.ProcessProfiles(Width, out leftProfile, out rightProfile, out minx, out maxx, out miny, out maxy, out scale, out width, out height);
@@ -35,20 +36,25 @@ namespace Hotwire
 			if (leftProfile != null)
 			{
 				DrawProfile(leftProfile, Pens.Green, minx, miny, width, height, scale, e);
+				profileAvailable = true;
 			}
 
 			if (rightProfile != null)
 			{
 				DrawProfile(rightProfile, Pens.Blue, minx, miny, width, height, scale, e);
+				profileAvailable = true;
 			}
 
-			// Draw origin
-			Vector2 point = (Data.Origin - new Vector2(minx, miny)) * scale;
-			point.x = point.x + (Width - width) / 2;
-			point.y = (Height + height / 2) / 2 - point.y;
+			if (profileAvailable)
+			{
+				// Draw origin
+				Vector2 point = (Data.Origin - new Vector2(minx, miny)) * scale;
+				point.x = point.x + (Width - width) / 2;
+				point.y = (Height + height / 2) / 2 - point.y;
 
-			e.Graphics.DrawLine(Pens.Red, point - new Vector2(2, 0), point + new Vector2(2, 0));
-			e.Graphics.DrawLine(Pens.Red, point - new Vector2(0, 2), point + new Vector2(0, 2));
+				e.Graphics.DrawLine(Pens.Red, point - new Vector2(2, 0), point + new Vector2(2, 0));
+				e.Graphics.DrawLine(Pens.Red, point - new Vector2(0, 2), point + new Vector2(0, 2));
+			}
 		}
 
 		private void DrawProfile(IEnumerable<Vector2> profile, Pen pen, double minx, double miny, double width, double height, double scale, PaintEventArgs e)

@@ -34,6 +34,11 @@ namespace Hotwire
 
 			path = Path.Combine(path, "configuration.xml");
 			_configuration = LoadData<Configuration>(path);
+			if (_configuration == null)
+			{
+				MessageBox.Show("No previous configuration could be loaded. Please check your settings!");
+				_configuration = new Configuration();
+			}
 
 			_debugForm = new DebugForm();
 		}
@@ -65,7 +70,7 @@ namespace Hotwire
 			XmlSerializer serializer = new XmlSerializer(typeof(T));
 			try
 			{
-				using (Stream stream = File.OpenWrite(path))
+				using (Stream stream = File.Open(path, FileMode.Create))
 					serializer.Serialize(stream, data);
 			}
 			catch
